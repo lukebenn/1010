@@ -4,6 +4,6 @@ A recreation of the semi-iconic '1010!' game found on the app store. Designed us
 Some of the sound files are copyrighted, so this program cannot be sold.
 
 ## Requirements
-Python 3.X
-Pygame
-GUI Capable Device
+Python 3.X   
+Pygame   
+GUI Capable Device   
