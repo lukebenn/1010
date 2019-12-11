@@ -21,43 +21,43 @@ pygame.mixer.set_num_channels(16)
 print('Loading Files From Disk')
 
 #IMAGES
-arrow = pygame.image.load('arrow.gif')
-arrow2 = pygame.image.load('arrow2.gif')
-sound_true = pygame.image.load('sound.gif')
-sound_false = pygame.image.load('nosound.gif')
-music_true = pygame.image.load('music.gif')
-music_false =  pygame.image.load('nomusic.gif')
-icon = pygame.image.load('icon.png')
+arrow = pygame.image.load('resources/images/arrow.gif')
+arrow2 = pygame.image.load('resources/images/arrow2.gif')
+sound_true = pygame.image.load('resources/images/sound.gif')
+sound_false = pygame.image.load('resources/images/nosound.gif')
+music_true = pygame.image.load('resources/images/music.gif')
+music_false =  pygame.image.load('resources/images/nomusic.gif')
+icon = pygame.image.load('resources/images/icon.png')
 pygame.display.set_icon(icon)
 
 #LOADS ALL FROG IMAGES
 frog = []
 for a in range(8):
-    frog.append(pygame.image.load(str(a)+'.gif'))
+    frog.append(pygame.image.load('resources/images/'+str(a)+'.gif'))
 
 #DEFINES SOUNDS AND CHANNELS
 #Music
-menu_theme = pygame.mixer.Sound('menu_theme.ogg')
-menu_theme2 = pygame.mixer.Sound('epic_sax.ogg')
-menu_theme3 = pygame.mixer.Sound('Hugh_Mungus_REMIX.ogg')
-game_theme = pygame.mixer.Sound('game_theme.ogg')
-game_theme2 = pygame.mixer.Sound('HEYYEA.ogg')
-game_theme3 = pygame.mixer.Sound('ProleteR-April_Showers.ogg')
-game_theme4 = pygame.mixer.Sound('MY HOPE WILL NEVER DIE.ogg')
-gameover_theme = pygame.mixer.Sound('game_over.ogg')
+menu_theme = pygame.mixer.Sound('resources/music/menu_theme.ogg')
+menu_theme2 = pygame.mixer.Sound('resources/music/epic_sax.ogg')
+menu_theme3 = pygame.mixer.Sound('resources/music/Hugh_Mungus_REMIX.ogg')
+game_theme = pygame.mixer.Sound('resources/music/game_theme.ogg')
+game_theme2 = pygame.mixer.Sound('resources/music/HEYYEA.ogg')
+game_theme3 = pygame.mixer.Sound('resources/music/ProleteR-April_Showers.ogg')
+game_theme4 = pygame.mixer.Sound('resources/music/My Hope Will Never Die.ogg')
+gameover_theme = pygame.mixer.Sound('resources/music/game_over.ogg')
 
-mlg = pygame.mixer.Sound('WOMBOCOMBO.ogg')
+mlg = pygame.mixer.Sound('resources/sound/WOMBOCOMBO.ogg')
 
 #Sound Effects
-hitmarker = pygame.mixer.Sound('HITMARKER.ogg')
-chan = pygame.mixer.Sound('chan.ogg')
-line_clear = pygame.mixer.Sound('MOM_GET_THE_CAMERA.ogg')
-triple = pygame.mixer.Sound('Oh_Baby_A_Triple.ogg')
-airhorn = pygame.mixer.Sound('AIRHORN.ogg')
-wow = pygame.mixer.Sound('wow.ogg')
-no_one = pygame.mixer.Sound('NEVER_DONE_THAT.ogg')
-damn_son = pygame.mixer.Sound('DAMN_SON_WOW.ogg')
-sanic = pygame.mixer.Sound('SANIC.ogg')
+hitmarker = pygame.mixer.Sound('resources/sound/HITMARKER.ogg')
+chan = pygame.mixer.Sound('resources/sound/chan.ogg')
+line_clear = pygame.mixer.Sound('resources/sound/MOM_GET_THE_CAMERA.ogg')
+triple = pygame.mixer.Sound('resources/sound/Oh_Baby_A_Triple.ogg')
+airhorn = pygame.mixer.Sound('resources/sound/AIRHORN.ogg')
+wow = pygame.mixer.Sound('resources/sound/wow.ogg')
+no_one = pygame.mixer.Sound('resources/sound/NEVER_DONE_THAT.ogg')
+damn_son = pygame.mixer.Sound('resources/sound/DAMN_SON_WOW.ogg')
+sanic = pygame.mixer.Sound('resources/sound/SANIC.ogg')
 
 channel1 = pygame.mixer.Channel(0) # menu_theme
 channel2 = pygame.mixer.Channel(1) # game_theme
@@ -72,29 +72,29 @@ channel10 = pygame.mixer.Channel(9) # gameover_theme
 
 
 #LOADS SAVE FILES
-with open("blocks.txt",'r') as block_pos:
+with open("save/blocks.txt",'r') as block_pos:
     loaded_block_pos = json.load(block_pos)
-with open("colours.txt",'r') as colour_pos:
+with open("save/colours.txt",'r') as colour_pos:
     loaded_colour_pos = json.load(colour_pos)
-with open("inventory.txt",'r') as inventory:
+with open("save/inventory.txt",'r') as inventory:
     loaded_inventory = json.load(inventory)
-with open("score.txt",'r') as score:
+with open("save/score.txt",'r') as score:
     loaded_score = json.load(score)
-with open("highscore.txt",'r') as highscore:
+with open("save/highscore.txt",'r') as highscore:
     highscore = json.load(highscore)
 
 def save(block_pos,colour_pos,inventory,score,highscore):
     if score>highscore:
         highscore = score
-    with open("blocks.txt",'w') as outfile:
+    with open("save/blocks.txt",'w') as outfile:
         json.dump(block_pos,outfile)
-    with open("colours.txt",'w') as outfile:
+    with open("save/colours.txt",'w') as outfile:
         json.dump(colour_pos,outfile)
-    with open("inventory.txt",'w') as outfile:
+    with open("save/inventory.txt",'w') as outfile:
         json.dump(inventory,outfile)
-    with open("score.txt",'w') as outfile:
+    with open("save/score.txt",'w') as outfile:
         json.dump(score,outfile)
-    with open("highscore.txt",'w') as outfile:
+    with open("save/highscore.txt",'w') as outfile:
         json.dump(highscore,outfile)
 
 
@@ -276,13 +276,13 @@ while not done:
             display_menu = False
             display_game = True
             #This code loads the game data from file
-            with open("blocks.txt",'r') as block_pos:
+            with open("save/blocks.txt",'r') as block_pos:
                 block_pos = json.load(block_pos)
-            with open("colours.txt",'r') as colour_pos:
+            with open("save/colours.txt",'r') as colour_pos:
                 colour_pos = json.load(colour_pos)
-            with open("inventory.txt",'r') as inventory:
+            with open("save/inventory.txt",'r') as inventory:
                 inventory = json.load(inventory)
-            with open("score.txt",'r') as score:
+            with open("save/score.txt",'r') as score:
                 score = json.load(score)
         SOUND = menu_list[5]
         MUSIC = menu_list[6]
